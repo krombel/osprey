@@ -42,6 +42,14 @@
     <meta name="description" content="{{ .Summary }}">
   {{ end }}
 
+  {{ if .Params.Keywords }}
+    <meta name="keywords" content="{{ delimit .Params.Keywords `,` }}">
+    {{ else if .Site.Params.Keywords }}
+    <meta name="keywords" content="{{ delimit .Site.Params.Keywords `,` }}">
+    {{ else if .Tags }}
+    <meta name="keywords" content="{{ delimit .Tags `,` }}">
+  {{ end }}
+
   {{ if .Site.Params.author }}
     <meta name="author" content="{{ .Site.Params.author }}">
   {{ end }}
